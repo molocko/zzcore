@@ -1,0 +1,27 @@
+main: io.BM.Main
+name: ZZCore
+version: 0.3
+description: Disable spawnrate
+api-version: '1.20'
+
+commands:
+  zzcore:
+    description: Main command
+
+  gm4:
+    description: GM4 command
+
+  brevity:
+    description: Brevity command
+
+  scripts:
+    description: Scripts command
+
+  tess:
+    description: Tess command
+
+  offline:
+    description: Offline command
+
+
+

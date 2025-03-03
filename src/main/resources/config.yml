@@ -1,0 +1,5 @@
+disableSR: true
+
+# SPECIAL
+damage: false
+blind: true
