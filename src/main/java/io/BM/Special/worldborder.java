@@ -32,15 +32,32 @@ public class worldborder implements Listener {
             if(x<=border+10){
                 vec.setX(-0.5);
                 vec.setY(0.2);
-            p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 20*2,4));
+                p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 20*2,4));
                 p.playSound(p, Sound.BLOCK_AZALEA_STEP, 1, 1);
                 zzp.sendSpecialMsg(ChatMessageType.ACTION_BAR, "<red>Еще рано");
             }
             else {
                 vec.setX(-10);
                 vec.setY(1);
-                p.sendMessage("x");
-            p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 20*2,4));
+                p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 20*2,4));
+                p.playSound(p, Sound.BLOCK_CAVE_VINES_FALL, 1, 1);
+                zzp.sendSpecialMsg(ChatMessageType.ACTION_BAR, "<red><magic>УМРИ");
+            }
+        }
+
+        if(x<-border){
+            push = true;
+            if(x>=-border-10){
+                vec.setX(0.5);
+                vec.setY(0.2);
+                p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 20*2,4));
+                p.playSound(p, Sound.BLOCK_AZALEA_STEP, 1, 1);
+                zzp.sendSpecialMsg(ChatMessageType.ACTION_BAR, "<red>Еще рано");
+            }
+            else {
+                vec.setX(10);
+                vec.setY(1);
+                p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 20*2,4));
                 p.playSound(p, Sound.BLOCK_CAVE_VINES_FALL, 1, 1);
                 zzp.sendSpecialMsg(ChatMessageType.ACTION_BAR, "<red><magic>УМРИ");
             }
@@ -53,7 +70,7 @@ public class worldborder implements Listener {
 
                 vec.setZ(-0.5);
                 vec.setY(0.2);
-               p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 20*2,4));
+                p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 20*2,4));
                 p.playSound(p, Sound.BLOCK_AZALEA_STEP, 1, 1);
                 zzp.sendSpecialMsg(ChatMessageType.ACTION_BAR, "<red>Еще рано");
 
@@ -63,17 +80,31 @@ public class worldborder implements Listener {
 //            if(p.getWorld().getHighestBlockAt(x,z).getY()+1 == p.getLocation().getY()) {
                 vec.setZ(-10);
                 vec.setY(1);
-                p.sendMessage("z");
 
                 p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 20*2,4));
-                p.playSound(p, Sound.BLOCK_CAVE_VINES_PICK_BERRIES, 1, 1);
+                p.playSound(p, Sound.BLOCK_CAVE_VINES_FALL, 1, 1);
                 zzp.sendSpecialMsg(ChatMessageType.ACTION_BAR, "<red><magic>УМРИ");
 //            }
             }
         }
+        if(z<-border){
+            push = true;
+            if(z>=-border-10){
+                vec.setZ(0.5);
+                vec.setY(0.2);
+                p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 20*2,4));
+                p.playSound(p, Sound.BLOCK_AZALEA_STEP, 1, 1);
+                zzp.sendSpecialMsg(ChatMessageType.ACTION_BAR, "<red>Еще рано");
+            }
+            else {
+                vec.setZ(10);
+                vec.setY(1);
+                p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 20*2,4));
+                p.playSound(p, Sound.BLOCK_CAVE_VINES_FALL, 1, 1);
+                zzp.sendSpecialMsg(ChatMessageType.ACTION_BAR, "<red><magic>УМРИ");
+            }
+        }
         if(push) {
-            p.sendMessage(vec.toString());
-
             p.setVelocity(vec);
         }
 
