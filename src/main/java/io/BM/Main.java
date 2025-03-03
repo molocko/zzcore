@@ -3,10 +3,8 @@ package io.BM;
 import io.BM.CMDs.scriptsCMD;
 import io.BM.CMDs.zzcoreCMD;
 import io.BM.Special.*;
-import org.bukkit.Bukkit;
-import org.bukkit.Color;
-import org.bukkit.Location;
-import org.bukkit.Particle;
+import org.bukkit.*;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.logging.Logger;
@@ -26,6 +24,11 @@ public class Main extends JavaPlugin {
 
         log.info("ZZCore Enabled");
         log.info("Developed by BM");
+
+
+        SpecialShovel.init(this);
+        getServer().getPluginManager().registerEvents(new SpecialShovel(), this);
+
 
 //        getCommand("zzcore").setExecutor(new zzcoreCMD());
 //        getCommand("gm4").setExecutor(new gm4CMD());
@@ -59,6 +62,7 @@ public class Main extends JavaPlugin {
         getConfig().options().copyDefaults();
         saveDefaultConfig();
 
+        Location loc = new Location(Bukkit.getWorld("world"), 2483, 70, 4331);
         Main.getInstance().getServer().getScheduler().runTaskTimer(Main.getInstance(), ()-> {
             if(!TPEvent.used.get()) {
                 // 0
@@ -67,24 +71,26 @@ public class Main extends JavaPlugin {
                 Bukkit.getWorld("world").spawnParticle(Particle.REDSTONE, new Location(Bukkit.getWorld("world"), (2483.4 + 2482.6) / 2, 69.5, (4331.4 + 4332.4) / 2), 2, new Particle.DustOptions(Color.AQUA, 1.0F));
                 Bukkit.getWorld("world").spawnParticle(Particle.REDSTONE, new Location(Bukkit.getWorld("world"), (2483.4 + 2482.6) / 2, 69.5, (4331.4 + 4332.4) / 2), 2, new Particle.DustOptions(Color.AQUA, 1.0F));
             }
-            // 1
-            Bukkit.getWorld("world").spawnParticle(Particle.REDSTONE, new Location(Bukkit.getWorld("world"), (2487.4 + 2486.6) / 2, 88.5, (4331.4 + 4332.4) / 2), 2, new Particle.DustOptions(Color.AQUA, 1.0F));
-            Bukkit.getWorld("world").spawnParticle(Particle.REDSTONE, new Location(Bukkit.getWorld("world"), (2487.4 + 2486.6) / 2, 88.5, (4331.4 + 4332.4) / 2), 2, new Particle.DustOptions(Color.AQUA, 1.0F));
-            Bukkit.getWorld("world").spawnParticle(Particle.REDSTONE, new Location(Bukkit.getWorld("world"), (2487.4 + 2486.6) / 2, 88.5, (4331.4 + 4332.4) / 2), 2, new Particle.DustOptions(Color.AQUA, 1.0F));
-            Bukkit.getWorld("world").spawnParticle(Particle.REDSTONE, new Location(Bukkit.getWorld("world"), (2487.4 + 2486.6) / 2, 88.5, (4331.4 + 4332.4) / 2), 2, new Particle.DustOptions(Color.AQUA, 1.0F));
 
-            // 8
-            Bukkit.getWorld("world").spawnParticle(Particle.REDSTONE, new Location(Bukkit.getWorld("world"), (2483.4 + 2482.6) / 2, 98.5, (4327.4 + 4328.4) / 2), 2, new Particle.DustOptions(Color.AQUA, 1.0F));
-            Bukkit.getWorld("world").spawnParticle(Particle.REDSTONE, new Location(Bukkit.getWorld("world"), (2483.4 + 2482.6) / 2, 98.5, (4327.4 + 4328.4) / 2), 2, new Particle.DustOptions(Color.AQUA, 1.0F));
-            Bukkit.getWorld("world").spawnParticle(Particle.REDSTONE, new Location(Bukkit.getWorld("world"), (2483.4 + 2482.6) / 2, 98.5, (4327.4 + 4328.4) / 2), 2, new Particle.DustOptions(Color.AQUA, 1.0F));
-            Bukkit.getWorld("world").spawnParticle(Particle.REDSTONE, new Location(Bukkit.getWorld("world"), (2483.4 + 2482.6) / 2, 98.5, (4327.4 + 4328.4) / 2), 2, new Particle.DustOptions(Color.AQUA, 1.0F));
+            if(shouldSpawnParticles(loc)) {
+                // 1
+                Bukkit.getWorld("world").spawnParticle(Particle.REDSTONE, new Location(Bukkit.getWorld("world"), (2487.4 + 2486.6) / 2, 88.5, (4331.4 + 4332.4) / 2), 2, new Particle.DustOptions(Color.AQUA, 1.0F));
+                Bukkit.getWorld("world").spawnParticle(Particle.REDSTONE, new Location(Bukkit.getWorld("world"), (2487.4 + 2486.6) / 2, 88.5, (4331.4 + 4332.4) / 2), 2, new Particle.DustOptions(Color.AQUA, 1.0F));
+                Bukkit.getWorld("world").spawnParticle(Particle.REDSTONE, new Location(Bukkit.getWorld("world"), (2487.4 + 2486.6) / 2, 88.5, (4331.4 + 4332.4) / 2), 2, new Particle.DustOptions(Color.AQUA, 1.0F));
+                Bukkit.getWorld("world").spawnParticle(Particle.REDSTONE, new Location(Bukkit.getWorld("world"), (2487.4 + 2486.6) / 2, 88.5, (4331.4 + 4332.4) / 2), 2, new Particle.DustOptions(Color.AQUA, 1.0F));
 
-            // 9
-            Bukkit.getWorld("world").spawnParticle(Particle.REDSTONE, new Location(Bukkit.getWorld("world"), (2483.4 + 2482.6) / 2, 108.5, (4327.4 + 4328.4) / 2), 2, new Particle.DustOptions(Color.RED, 1.0F));
-            Bukkit.getWorld("world").spawnParticle(Particle.REDSTONE, new Location(Bukkit.getWorld("world"), (2483.4 + 2482.6) / 2, 108.5, (4327.4 + 4328.4) / 2), 2, new Particle.DustOptions(Color.RED, 1.0F));
-            Bukkit.getWorld("world").spawnParticle(Particle.REDSTONE, new Location(Bukkit.getWorld("world"), (2483.4 + 2482.6) / 2, 108.5, (4327.4 + 4328.4) / 2), 2, new Particle.DustOptions(Color.RED, 1.0F));
-            Bukkit.getWorld("world").spawnParticle(Particle.REDSTONE, new Location(Bukkit.getWorld("world"), (2483.4 + 2482.6) / 2, 108.5, (4327.4 + 4328.4) / 2), 2, new Particle.DustOptions(Color.RED, 1.0F));
+                // 8
+                Bukkit.getWorld("world").spawnParticle(Particle.REDSTONE, new Location(Bukkit.getWorld("world"), (2483.4 + 2482.6) / 2, 98.5, (4327.4 + 4328.4) / 2), 2, new Particle.DustOptions(Color.AQUA, 1.0F));
+                Bukkit.getWorld("world").spawnParticle(Particle.REDSTONE, new Location(Bukkit.getWorld("world"), (2483.4 + 2482.6) / 2, 98.5, (4327.4 + 4328.4) / 2), 2, new Particle.DustOptions(Color.AQUA, 1.0F));
+                Bukkit.getWorld("world").spawnParticle(Particle.REDSTONE, new Location(Bukkit.getWorld("world"), (2483.4 + 2482.6) / 2, 98.5, (4327.4 + 4328.4) / 2), 2, new Particle.DustOptions(Color.AQUA, 1.0F));
+                Bukkit.getWorld("world").spawnParticle(Particle.REDSTONE, new Location(Bukkit.getWorld("world"), (2483.4 + 2482.6) / 2, 98.5, (4327.4 + 4328.4) / 2), 2, new Particle.DustOptions(Color.AQUA, 1.0F));
 
+                // 9
+                Bukkit.getWorld("world").spawnParticle(Particle.REDSTONE, new Location(Bukkit.getWorld("world"), (2483.4 + 2482.6) / 2, 108.5, (4327.4 + 4328.4) / 2), 2, new Particle.DustOptions(Color.RED, 1.0F));
+                Bukkit.getWorld("world").spawnParticle(Particle.REDSTONE, new Location(Bukkit.getWorld("world"), (2483.4 + 2482.6) / 2, 108.5, (4327.4 + 4328.4) / 2), 2, new Particle.DustOptions(Color.RED, 1.0F));
+                Bukkit.getWorld("world").spawnParticle(Particle.REDSTONE, new Location(Bukkit.getWorld("world"), (2483.4 + 2482.6) / 2, 108.5, (4327.4 + 4328.4) / 2), 2, new Particle.DustOptions(Color.RED, 1.0F));
+                Bukkit.getWorld("world").spawnParticle(Particle.REDSTONE, new Location(Bukkit.getWorld("world"), (2483.4 + 2482.6) / 2, 108.5, (4327.4 + 4328.4) / 2), 2, new Particle.DustOptions(Color.RED, 1.0F));
+            }
             // if(!TPEvent.used.get()){
            //     for (Player p : getServer().getOnlinePlayers()){
            //         TPEvent.spiral(p);
@@ -100,6 +106,14 @@ public class Main extends JavaPlugin {
     public static Main getInstance() {
         return instance;
     }
+
+    private boolean shouldSpawnParticles(Location loc) {
+        World world = loc.getWorld();
+        if (world == null) return false;
+//        if (!world.isChunkLoaded(loc.getBlockX() >> 4, loc.getBlockZ() >> 4)) return false;
+        return !world.getNearbyEntities(loc, 128, 128, 128, e -> e instanceof Player).isEmpty();
+    }
+
 
 
 
