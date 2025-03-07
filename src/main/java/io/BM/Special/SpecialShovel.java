@@ -24,9 +24,11 @@ public class SpecialShovel implements Listener {
     public void onBlockBreak(BlockBreakEvent event) {
         Player p = event.getPlayer();
         if(p.getGameMode() == GameMode.CREATIVE) return;
-        p.sendMessage(event.getBlock().getType()+"");
-        p.sendMessage(String.valueOf(event.getPlayer().getItemInHand() == createShovel()));
-        if(event.getPlayer().getItemInHand().getItemMeta().getDisplayName().equals(createShovel().getItemMeta().getDisplayName()) && event.getBlock().getType() != Material.SNOW_BLOCK && event.getBlock().getType() != Material.SNOW) event.setCancelled(true);
+        if(p.getItemInHand().getItemMeta().getDisplayName().equals(createShovel().getItemMeta().getDisplayName())) {
+            if (event.getBlock().getType() != Material.SNOW_BLOCK && event.getBlock().getType() != Material.SNOW) {
+                event.setCancelled(true);
+            }
+        }
     }
 
     public static void init(Main plugin) {

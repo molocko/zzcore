@@ -1,6 +1,7 @@
 package io.BM.Special;
 
 import net.md_5.bungee.api.ChatMessageType;
+import org.bukkit.GameMode;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -24,6 +25,9 @@ public class worldborder implements Listener {
 
         Player p = e.getPlayer();
         ZZPlayer zzp = new ZZPlayer(p);
+
+//        if(p.getGameMode() != GameMode.SURVIVAL) return;
+
         int x = (int) p.getLocation().getX();
         int z = (int) p.getLocation().getZ();
 
