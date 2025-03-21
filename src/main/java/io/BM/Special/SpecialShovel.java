@@ -24,10 +24,24 @@ public class SpecialShovel implements Listener {
     public void onBlockBreak(BlockBreakEvent event) {
         Player p = event.getPlayer();
         if(p.getGameMode() == GameMode.CREATIVE) return;
-        if(p.getItemInHand().getItemMeta().getDisplayName().equals(createShovel().getItemMeta().getDisplayName())) {
-            if (event.getBlock().getType() != Material.SNOW_BLOCK && event.getBlock().getType() != Material.SNOW) {
-                event.setCancelled(true);
+
+        ItemMeta meta = p.getItemInHand().getItemMeta();
+        if(meta == null) return;
+
+        try {
+            if (p.getItemInHand().getItemMeta().getDisplayName().equals(createShovel().getItemMeta().getDisplayName())) {
+                if (event.getBlock().getType() != Material.SNOW_BLOCK && event.getBlock().getType() != Material.SNOW) {
+                    event.setCancelled(true);
+                }
             }
+        } catch (Exception e) {
+            Funcs.sendMsg(p,"<red>эй!");
+            Main.getInstance().getServer().getScheduler().runTaskLater(Main.getInstance(), () -> {Funcs.sendMsg(p,"<red>что ты только что сделал??");}, 35);
+            Main.getInstance().getServer().getScheduler().runTaskLater(Main.getInstance(), () -> {Funcs.sendMsg(p,"<red>какого хрена в консоли вылезла чертова ошибка?");}, 70);
+            Main.getInstance().getServer().getScheduler().runTaskLater(Main.getInstance(), () -> {Funcs.sendMsg(p,"<red>когда я (keborg/Илья Великий) зайду, ТЫ должен будешь мне все рассказать!");}, 105);
+            Main.getInstance().getServer().getScheduler().runTaskLater(Main.getInstance(), () -> {Funcs.sendMsg(p,"<red>а то ты чем то незаконным занимаешься!");}, 140);
+            Main.getInstance().getServer().getScheduler().runTaskLater(Main.getInstance(), () -> {Funcs.sendMsg(p,"<red>я пофиксить не могу, нужна инфа");}, 175);
+            Main.getInstance().getServer().getScheduler().runTaskLater(Main.getInstance(), () -> {Funcs.sendMsg(p,"<red>ну кароче давай, жду от тебя объяснений");}, 210);
         }
     }
 

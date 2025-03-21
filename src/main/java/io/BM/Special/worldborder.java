@@ -4,6 +4,7 @@ import net.md_5.bungee.api.ChatMessageType;
 import org.bukkit.GameMode;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Pose;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
@@ -109,6 +110,9 @@ public class worldborder implements Listener {
             }
         }
         if(push) {
+            if(p.isInsideVehicle()){
+                p.leaveVehicle();
+            }
             p.setVelocity(vec);
         }
 

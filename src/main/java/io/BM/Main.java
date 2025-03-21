@@ -50,6 +50,8 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new TPEvent(), this);
         getServer().getPluginManager().registerEvents(new worldborder(), this);
 
+        Funcs.regEvent(this, new milk());
+
 //        getServer().getPluginManager().registerEvents(new hbsysEvent(), this);
 
 //        OfflineServer.initOS();
